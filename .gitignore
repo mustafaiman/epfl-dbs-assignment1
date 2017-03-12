@@ -17,3 +17,5 @@ target/
 
 **/task1_queries.txt
 **/file1.tsv
+**/out1.txt
+**/real-results.txt

@@ -7,6 +7,7 @@ public class JumpingWindow {
     private double epsilon;
     private int windowSizeSW;
     private Window[] windows;
+    private int eventCounter;
 
     public JumpingWindow(int windowSizeW, double epsilon) {
         this.windowSizeW = windowSizeW;
@@ -25,22 +26,16 @@ public class JumpingWindow {
     void insertEvent(int srcIp) {
         int aclassip = getAClass(srcIp);
         assert aclassip < 256;
-        for (int i = 0; i < 256; i++) {
-            if (aclassip == i) {
-                this.windows[i].increase();
-            } else {
-                this.windows[i].step();
-            }
-        }
+        this.windows[aclassip].increase(eventCounter++);
     }
 
     int getFreqEstimation(int srcIP) {
         int aclassip = getAClass(srcIP);
-        return this.windows[aclassip].getFreq();
+        return this.windows[aclassip].getFreq(eventCounter);
     }
 
     int getFreqEstimation(int srcIP, int queryWindowSizeW1) {
         int aclassip = getAClass(srcIP);
-        return this.windows[aclassip].getFreq(queryWindowSizeW1);
+        return this.windows[aclassip].getFreq(queryWindowSizeW1, eventCounter);
     }
 }

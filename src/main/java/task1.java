@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Scanner;
@@ -10,15 +12,9 @@ import java.util.Scanner;
  */
 public class task1 {
     public static void main(String[] args) throws IOException, URISyntaxException {
-        File stream;
-        File queries;
-
         Scanner queryScanner = new Scanner(new File(task1.class.getResource("/task1_queries.txt").toURI()));
-        stream = new File(task1.class.getResource("/file1.tsv").toURI());
-
-
-
-        BufferedReader streamIS = new BufferedReader(new FileReader(stream));
+        BufferedReader streamIS = new BufferedReader(new FileReader(new File(task1.class.getResource("/file1.tsv").toURI())));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(new File("out1.txt")));
 
         int eid = 0;
 
@@ -33,11 +29,12 @@ public class task1 {
                 queryIP = Integer.parseInt(queryScanner.next().split("\\.")[0]);
                 queryRange = Integer.parseInt(queryScanner.next());
                 if (queryRange == 0) {
-                    System.out.println(jw.getFreqEstimation(queryIP));
+                    writer.write(""+jw.getFreqEstimation(queryIP));
                 } else {
-                    System.out.println(jw.getFreqEstimation(queryIP, queryRange));
+                    writer.write(""+jw.getFreqEstimation(queryIP, queryRange));
                 }
                 if (queryScanner.hasNext()) {
+                    writer.write(",");
                     nextQueryTime = Integer.parseInt(queryScanner.next());
                 }
             }
@@ -46,5 +43,6 @@ public class task1 {
             eid++;
         }
 
+        writer.close();
     }
 }

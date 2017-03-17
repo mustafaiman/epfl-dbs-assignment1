@@ -17,7 +17,7 @@ import java.util.Scanner;
 /**
  * Created by mustafa on 3/12/17.
  */
-public class CMSketchSanityTest {
+public class Task2SanityTest {
     private static Scanner queryScanner;
     private static BufferedReader streamScanner;
     private static File resFile = new File("real-results-2.txt");
@@ -30,7 +30,7 @@ public class CMSketchSanityTest {
 
     @BeforeClass
     public static void setup() throws URISyntaxException, IOException {
-        streamFile = new File(CMSketchSanityTest.class.getResource("/task2_queries.txt").toURI());
+        streamFile = new File(Task2SanityTest.class.getResource("/task2_queries.txt").toURI());
         if (resFile.exists()) {
             Scanner resultsScanner = new Scanner(resFile);
             while (resultsScanner.hasNext()) {

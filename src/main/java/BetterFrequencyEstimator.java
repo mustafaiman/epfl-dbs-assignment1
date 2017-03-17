@@ -22,7 +22,7 @@ public class BetterFrequencyEstimator {
 
     public BetterFrequencyEstimator(int availableSpace, float pr1, float epsilon, float pr2) throws InsufficientMemoryException {
         bitP = (int)Math.floor(Math.log(pr1)/Math.log(0.6185) * MAX_DISTINCT);
-        p = (int)((double)2/epsilon);
+        p = (int)(Math.E/epsilon);
 
         numHashFunctions = (int)(Math.log(1.0-pr2)/Math.log(0.5));
         numBitHashFunctions = (int)(Math.log(2)*bitP/MAX_DISTINCT);;
@@ -33,6 +33,10 @@ public class BetterFrequencyEstimator {
         System.out.println("P, numHashFUnctions >>>>>>>>>>>>>>>> " + p + " " + numHashFunctions);
 
 
+        if (availableSpace < estimateSpace(bitP, 1, p, numHashFunctions)) {
+            System.out.println(estimateSpace(bitP, 1, p, numHashFunctions));
+            throw new InsufficientMemoryException();
+        }
         table = new int[numHashFunctions][p];
 
 
@@ -40,6 +44,10 @@ public class BetterFrequencyEstimator {
         bitA = new int[]{983, 997, 991, 977, 971, 947, 941, 881, 883};
 
 
+    }
+
+    int estimateSpace(int existenceWidth, int existenceHeight, int frequencyWidth, int frequencyHeight) {
+        return existenceHeight * (existenceWidth/8) * 4 + frequencyHeight * frequencyWidth * 4;
     }
 
     void addArrival(int key) {

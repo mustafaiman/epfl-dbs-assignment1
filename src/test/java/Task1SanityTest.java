@@ -16,11 +16,11 @@ import java.util.Scanner;
 /**
  * Created by mustafa on 3/12/17.
  */
-public class SanityTest {
+public class Task1SanityTest {
 
     private static Scanner queryScanner;
     private static BufferedReader streamScanner;
-    private static File resFile = new File("real-results.txt");
+    private static File resFile = new File("real-results-1.txt");
     private static File outpfile = new File("out1.txt");
     private static final int DEFW = 10000;
     private static final double eps = 0.01;
@@ -39,7 +39,7 @@ public class SanityTest {
             }
             resScanner.close();
         } else {
-            queryScanner = new Scanner(new File(SanityTest.class.getResource("/task1_queries.txt").toURI()));
+            queryScanner = new Scanner(new File("/task1_queries.txt"));
             String starter;
             int queryStart;
             int queryEnd;
@@ -51,7 +51,7 @@ public class SanityTest {
                 queryIp = Integer.parseInt(queryScanner.next().split("\\.")[0]);
                 queryW = Integer.parseInt(queryScanner.next());
                 if (queryW == 0) {
-                    queryW = SanityTest.DEFW;
+                    queryW = Task1SanityTest.DEFW;
                 }
                 queryStart = queryEnd - queryW;
                 Query newQuery = new Query();

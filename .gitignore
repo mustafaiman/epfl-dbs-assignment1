@@ -15,10 +15,7 @@
 log/
 target/
 
-**/task1_queries.txt
-**/task2_queries.txt
 **/file1.tsv
 **/out1.txt
 **/out2.txt
-**/real-results.txt
-**/real-results-2.txt
+**/out3.txt

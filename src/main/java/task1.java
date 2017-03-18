@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 public class task1 {
     public static void main(String[] args) throws IOException, URISyntaxException {
-        Scanner queryScanner = new Scanner(new File(task1.class.getResource("/task1_queries.txt").toURI()));
-        BufferedReader streamIS = new BufferedReader(new FileReader(new File(task1.class.getResource("/file1.tsv").toURI())));
+        Scanner queryScanner = new Scanner(new File("task1_queries.txt"));
+        BufferedReader streamIS = new BufferedReader(new FileReader(new File("file1.tsv")));
         BufferedWriter writer = new BufferedWriter(new FileWriter(new File("out1.txt")));
 
         int eid = 0;

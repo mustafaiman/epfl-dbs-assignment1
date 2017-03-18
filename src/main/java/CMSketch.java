@@ -11,9 +11,11 @@ public class CMSketch {
     private final int[] a = {983, 997, 991, 977, 971, 947, 941, 881, 883};
 
 
-    public CMSketch(int numHashFunctions, int width) {
-        this.numHashFunctions = numHashFunctions;
-        this.width = width;
+    public CMSketch(double p, double eps) {
+        this.width = (int)Math.ceil(Math.E/eps);
+        this.numHashFunctions = (int)Math.ceil(Math.log(1.0/p));
+
+        System.out.println("CMSketch w = " + width +  ", d = " + numHashFunctions);
 
         table = new int[numHashFunctions][width];
     }
@@ -36,6 +38,11 @@ public class CMSketch {
         return minVal;
     }
 
+    public static long estimateCost(double p, double eps) {
+        int width = (int)Math.ceil(Math.E/eps);
+        int numHashFunctions = (int)Math.ceil(Math.log(1.0/p));
+        return width * 4 * numHashFunctions;
+    }
 
     private int hash(int funcNum, int num) {
         return Integer.remainderUnsigned(Integer.remainderUnsigned(num, width) * Integer.remainderUnsigned(a[funcNum], width), width);

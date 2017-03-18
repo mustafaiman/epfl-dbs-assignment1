@@ -30,7 +30,7 @@ public class Task2SanityTest {
 
     @BeforeClass
     public static void setup() throws URISyntaxException, IOException {
-        streamFile = new File(Task2SanityTest.class.getResource("/task2_queries.txt").toURI());
+        streamFile = new File("task2_queries.txt");
         if (resFile.exists()) {
             Scanner resultsScanner = new Scanner(resFile);
             while (resultsScanner.hasNext()) {

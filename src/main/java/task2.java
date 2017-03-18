@@ -29,8 +29,8 @@ public class task2 {
 
 
 
-        Scanner queryScanner = new Scanner(new File(task2.class.getResource("/task2_queries.txt").toURI()));
-        BufferedReader streamIS = new BufferedReader(new FileReader(new File(task1.class.getResource("/file1.tsv").toURI())));
+        Scanner queryScanner = new Scanner(new File("task2_queries.txt"));
+        BufferedReader streamIS = new BufferedReader(new FileReader(new File("file1.tsv")));
         BufferedWriter writer = new BufferedWriter(new FileWriter(new File("out2.txt")));
 
         int eid = 0;

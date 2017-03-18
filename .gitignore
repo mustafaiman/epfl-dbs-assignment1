@@ -19,3 +19,11 @@ target/
 **/out1.txt
 **/out2.txt
 **/out3.txt
+
+# latex
+*.aux
+*.log
+*.pdf
+*.synctex.gz
+
+submission/

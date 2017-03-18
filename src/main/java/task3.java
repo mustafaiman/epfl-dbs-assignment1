@@ -11,14 +11,21 @@ import java.util.Scanner;
  * Created by mustafa on 3/18/17.
  */
 public class task3 {
+
+    private static double D_P = 0.1;
+    private static final int N_IP = 400000;
+
     public static void main(String[] args) throws URISyntaxException, IOException {
 
-        Scanner queryScanner = new Scanner(new File(task3.class.getResource("/task3_queries.txt").toURI()));
+        if (args.length > 0)
+            D_P = Float.parseFloat(args[0]);
 
-        BufferedReader streamIS = new BufferedReader(new FileReader(new File(task1.class.getResource("/file1.tsv").toURI())));
+        Scanner queryScanner = new Scanner(new File("task3_queries.txt"));
+
+        BufferedReader streamIS = new BufferedReader(new FileReader(new File("file1.tsv")));
         BufferedWriter writer = new BufferedWriter(new FileWriter(new File("out3.txt")));
 
-        rangeBF rbf = new rangeBF(0.1, 400000, 20, 33);
+        rangeBF rbf = new rangeBF(D_P, N_IP, 20, 33);
 
         int eid = 0;
         String line;
@@ -35,9 +42,9 @@ public class task3 {
             lip = to32BitIP(queryScanner.next());
             rip = to32BitIP(queryScanner.next());
             if (rbf.existsInRange(lip, rip)) {
-                writer.write("true\n");
+                writer.write("true,");
             } else {
-                writer.write("false\n");
+                writer.write("false,");
             }
         }
 

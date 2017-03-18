@@ -1,19 +1,16 @@
-import java.util.BitSet;
-
 /**
  * Created by mustafa on 3/12/17.
  */
-public class BetterFrequencyEstimator {
+public class betterFrequencyEstimator {
 
     public final int MAX_DISTINCT = 400000;
 
     private final CMSketch cms;
     private final BloomFilter bloomFilter;
 
-    public BetterFrequencyEstimator(int availableSpace, float pr1, float epsilon, float pr2) throws InsufficientMemoryException {
+    public betterFrequencyEstimator(int availableSpace, float pr1, float epsilon, float pr2) throws InsufficientMemoryException {
 
         if (availableSpace < CMSketch.estimateCost(1-pr2, epsilon) + BloomFilter.estimateCost(pr1, MAX_DISTINCT)) {
-            System.out.println(CMSketch.estimateCost(1-pr2, epsilon) + BloomFilter.estimateCost(pr1, MAX_DISTINCT) );
             throw new InsufficientMemoryException();
         }
 

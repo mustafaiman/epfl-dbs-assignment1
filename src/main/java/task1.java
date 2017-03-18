@@ -11,6 +11,10 @@ import java.util.Scanner;
  * Created by mustafa on 3/12/17.
  */
 public class task1 {
+
+    private static int D_W = 10000;
+    private static double D_E = 0.01;
+
     public static void main(String[] args) throws IOException, URISyntaxException {
         Scanner queryScanner = new Scanner(new File("task1_queries.txt"));
         BufferedReader streamIS = new BufferedReader(new FileReader(new File("file1.tsv")));
@@ -18,7 +22,7 @@ public class task1 {
 
         int eid = 0;
 
-        JumpingWindow jw = new JumpingWindow(10000, 0.01);
+        JumpingWindow jw = new JumpingWindow(D_W, D_E);
 
         String line;
         int nextQueryTime = Integer.parseInt(queryScanner.next());

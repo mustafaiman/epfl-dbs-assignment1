@@ -35,7 +35,7 @@ public class task2 {
 
         int eid = 0;
 
-        BetterFrequencyEstimator fe = new BetterFrequencyEstimator(D_AVAIL, D_PR1, D_EPS, D_PR2);
+        betterFrequencyEstimator fe = new betterFrequencyEstimator(D_AVAIL, D_PR1, D_EPS, D_PR2);
 
         String line;
         int nextQueryTime = Integer.parseInt(queryScanner.next());
@@ -44,7 +44,6 @@ public class task2 {
             if (nextQueryTime == eid) {
                 String strip = queryScanner.next();
                 queryIP = to32BitIP(strip);
-                System.out.println(eid + " " + strip);
                 writer.write(""+fe.getFreqEstimation(queryIP));
                 if (queryScanner.hasNext()) {
                     writer.write(",");

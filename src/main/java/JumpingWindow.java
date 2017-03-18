@@ -12,7 +12,7 @@ public class JumpingWindow {
     public JumpingWindow(int windowSizeW, double epsilon) {
         this.windowSizeW = windowSizeW;
         this.epsilon = epsilon;
-        this.windowSizeSW = (int)(2*epsilon*windowSizeW);
+        this.windowSizeSW = (int)(2*this.epsilon*this.windowSizeW);
         this.windows = new Window[256];
         for (int i = 0; i < 256; i++) {
             this.windows[i] = new Window(windowSizeW/windowSizeSW, windowSizeSW);
@@ -25,7 +25,6 @@ public class JumpingWindow {
 
     void insertEvent(int srcIp) {
         int aclassip = getAClass(srcIp);
-        assert aclassip < 256;
         this.windows[aclassip].increase(eventCounter++);
     }
 

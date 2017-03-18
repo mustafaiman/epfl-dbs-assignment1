@@ -2,7 +2,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -10,11 +9,11 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by mustafa on 3/12/17.
  */
-public class BetterFrequencyEstimatorTest {
+public class betterFrequencyEstimatorTest {
 
     @Test
     public void test() throws InsufficientMemoryException {
-        BetterFrequencyEstimator estimator = new BetterFrequencyEstimator(10000000, 0.01f, 0.0001f, 0.9f);
+        betterFrequencyEstimator estimator = new betterFrequencyEstimator(10000000, 0.01f, 0.0001f, 0.9f);
 
         HashMap<Integer, Integer> realCounts = new HashMap<Integer, Integer>();
 

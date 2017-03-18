@@ -3,6 +3,9 @@ GASPAR="iman"
 SUBMISSION_DIR="submission/$GASPAR/exercise1"
 SOURCE_BASE="src/main/java"
 
+rm -f questions1.pdf questions1.log questions1.dvi questions1.aux
+pdflatex questions1.tex
+
 rm -rf $SUBMISSION_DIR
 mkdir -p $SUBMISSION_DIR/task1
 mkdir -p $SUBMISSION_DIR/task2

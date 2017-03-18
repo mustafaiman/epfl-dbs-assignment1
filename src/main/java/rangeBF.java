@@ -8,7 +8,6 @@ public class rangeBF {
     private BloomFilter[] tables;
     private BitSet[] basicSets;
 
-    private int lowerLevelI;
     private int upperLevelI;
 
     private int absoluteUpperLimit;
@@ -17,7 +16,7 @@ public class rangeBF {
         this.upperLevelI = upperLevelI;
         this.absoluteUpperLimit = absoluteUpperLimit;
 
-        tables = new BloomFilter[upperLevelI - lowerLevelI];
+        tables = new BloomFilter[upperLevelI];
         for (int i = 0; i < upperLevelI; i++) {
             tables[i] = new BloomFilter(pr, n);
         }

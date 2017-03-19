@@ -5,6 +5,8 @@ import java.util.BitSet;
  */
 public class rangeBF {
 
+    public static final int MAX_DISTINCT_IPS = 400000;
+
     private BloomFilter[] tables;
     private BitSet[] basicSets;
 
@@ -12,13 +14,21 @@ public class rangeBF {
 
     private int absoluteUpperLimit;
 
+    public rangeBF(double pr) {
+        this(pr, MAX_DISTINCT_IPS, 20, 33);
+    }
+
     public rangeBF(double pr, int n, int upperLevelI, int absoluteUpperLimit) {
         this.upperLevelI = upperLevelI;
         this.absoluteUpperLimit = absoluteUpperLimit;
 
         tables = new BloomFilter[upperLevelI];
         for (int i = 0; i < upperLevelI; i++) {
-            tables[i] = new BloomFilter(pr, n);
+            if (Math.pow(2, 32 - i) < MAX_DISTINCT_IPS) {
+                tables[i] = new BloomFilter(pr, (int)Math.pow(2, 32-i));
+            } else {
+                tables[i] = new BloomFilter(pr, n);
+            }
         }
         if (absoluteUpperLimit - upperLevelI > 0 ) {
             basicSets = new BitSet[absoluteUpperLimit-upperLevelI];

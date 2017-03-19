@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class task3 {
 
     private static double D_P = 0.1;
-    private static final int N_IP = 400000;
 
     public static void main(String[] args) throws URISyntaxException, IOException {
 
@@ -25,7 +24,7 @@ public class task3 {
         BufferedReader streamIS = new BufferedReader(new FileReader(new File("file1.tsv")));
         BufferedWriter writer = new BufferedWriter(new FileWriter(new File("out3.txt")));
 
-        rangeBF rbf = new rangeBF(D_P, N_IP, 20, 33);
+        rangeBF rbf = new rangeBF(D_P);
 
         int eid = 0;
         String line;

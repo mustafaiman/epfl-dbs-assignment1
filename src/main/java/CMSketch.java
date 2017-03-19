@@ -8,7 +8,7 @@ public class CMSketch {
 
     private final int table[][];
 
-    private final int[] a = {983, 997, 991, 977, 971, 947, 941, 881, 883};
+    private final int[] a = {983, 997, 991, 977, 971, 947, 941, 881, 883, 2161, 2153, 2521, 304537, 305423, 305749, 326707, 356561, 363401, 203207, 205043, 221587, 231109, 371383, 378463};
 
 
     public CMSketch(double p, double eps) {

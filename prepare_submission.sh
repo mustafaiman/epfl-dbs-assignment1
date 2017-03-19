@@ -32,3 +32,4 @@ copy_files FILES_T1 task1
 copy_files FILES_T2 task2
 copy_files FILES_T3 task3
 
+zip -r submission.zip submission/$GASPAR/
